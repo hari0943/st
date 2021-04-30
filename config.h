@@ -5,8 +5,15 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+#include "/home/alpine/.cache/wal/colors-wal-st.h"
+static char *font = "Inconsolata for powerline:pixelsize=15:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", 
+	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", 
+};
+
+static int borderpx = 4;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -43,10 +50,6 @@ static unsigned int tripleclicktimeout = 600;
 /* alt screens */
 int allowaltscreen = 1;
 
-/* allow certain non-interactive (insecure) window operations such as:
-   setting the clipboard text */
-int allowwindowops = 0;
-
 /*
  * draw latency range in ms - from new content/keypress/etc until drawing.
  * within this range, st draws when content stops arriving (idle). mostly it's
@@ -73,11 +76,11 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 0;
+const int boxdraw_braille = 1;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -104,12 +107,6 @@ char *termname = "st-256color";
  *	stty tabs
  */
 unsigned int tabspaces = 8;
-
-/* bg opacity */
-float alpha = 0.8;
-#include "/home/<USER>/.cache/wal/colors-wal-st.h"
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -178,6 +175,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
