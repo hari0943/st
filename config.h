@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-#include "/home/alpine/.cache/wal/colors-wal-st.h"
+#include "/home/cyk/.cache/wal/colors-wal-st.h"
 static char *font = "Inconsolata for powerline:pixelsize=15:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
